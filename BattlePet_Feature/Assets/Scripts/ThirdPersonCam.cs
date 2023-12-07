@@ -26,7 +26,7 @@ public class ThirdPersonCam : MonoBehaviour
     private void Update()
     {
         //rotate player orientation
-        Vector3 viewDir = transform.position - new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
         //rotate the player object
@@ -35,6 +35,6 @@ public class ThirdPersonCam : MonoBehaviour
         Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if(inputDir != Vector3.zero)
-            playerObject.forward = Vector3.Slerp(playerObject.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+            playerObject.forward = Vector3.Slerp(playerObject.forward, inputDir.normalized, Time.fixedDeltaTime * rotationSpeed);
     }
 }

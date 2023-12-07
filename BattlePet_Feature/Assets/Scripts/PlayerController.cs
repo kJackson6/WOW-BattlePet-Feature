@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     public float airMultiplier;
     private bool readyToJump;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    //[Header("Keybinds")]
+    //public KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        ResetJump();
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //When the player can jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        /*if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+        */
     }
 
     private void MovePlayer()
